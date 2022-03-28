@@ -1,0 +1,105 @@
+Alice (uniformly and independently) randomly picks two integers a,b from the range [1,104], and writes down the values of a+b, a−b, a⋅b and ⌊ab⌋ (integer division) in some random order. Unfortunately, she forgot the values of a and b. You need to help her to find out if there exists two integers a,b such that 1≤a,b≤104 and a+b, a−b, a⋅b, ⌊ab⌋ are the numbers she has written down.
+
+If a solution exists, it is guaranteed to be unique.
+
+Input Format
+The first line of input contains a single integer T, denoting the number of testcases. The description of T testcases follows.
+Each testcase consists of a single line of input, containing four space-separated integers A,B,C,D — the values written down by Alice. It is guaranteed that at most one of the four numbers A,B,C,D will be negative.
+Output Format
+For each testcase, output in a single line, separated by a space, the two numbers Alice has chosen in order (i.e, if the solution is a=1 and b=2, print 1 2 and not 2 1). If there does not exist any such choice of integers, print −1 twice, separated by a space, instead.
+Constraints
+1≤T≤105
+−109≤A,B,C,D≤109
+At most one of A,B,C,D is negative.
+Subtasks
+Subtask #1 (100 points): Original constraints
+
+Sample Input 1 
+2
+-1 72 0 17
+1 4 5 6
+Sample Output 1 
+8 9
+-1 -1
+Explanation
+Test case 1: With a=8,b=9 we obtain 8+9=17,8−9=−1,8⋅9=72,⌊89⌋=0 which are exactly the 4 numbers written down by Alice.
+
+Test case 2: It can be shown that no choice of integers a,b can produce the given 4 numbers.
+
+
+
+
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    static int[] solve(int A,int B,int C,int D,int ans1,int ans2)
+    {int[] arr = new int[2];
+        if((A+B) % 2==0)
+        {
+            int t1 = (A+B)/2;
+            int t2  =Math.abs(A-B)/2;
+            
+            if((t1<=0 || t2 >10000) || (t1>10000 || t2 <=0))
+            {
+                //ans1 = -1; ans2=-1;
+                arr[0]=-1;arr[1]=-1;
+                return arr;
+            }
+            
+            if((C == t1*t2 && D == t1/t2) || (C==t1/t2 && D==t1*t2))
+            {
+                //ans1 = t1;ans2 = t2;
+                 arr[0]=t1;arr[1]=t2;
+            }
+            else 
+            {
+                //ans1 = -1;ans2 = -1;
+                 arr[0]=-1;arr[1]=-1;
+            }
+        }
+        else 
+        {
+           // ans1 = -1; ans2 =-1;
+            arr[0]=-1;arr[1]=-1;
+        }
+        return arr;
+        
+        
+    }
+    
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t-->0){
+		    int A=sc.nextInt(), B=sc.nextInt(), C= sc.nextInt(), D=sc.nextInt();
+		    int ans1=0,ans2=0;
+		    int[] arr = new int[2];
+		    arr = solve(A,B,C,D,ans1,ans2);
+		     //System.out.println(ans1+" "+ans2);
+		    
+		    if(ans1==-1 && ans2==-1) arr=solve(A,C,B,D,ans1,ans2);
+		   // else { System.out.println(arr[0]+" "+arr[1]);continue;}
+		    
+		    if(ans1==-1 && ans2==-1) arr=solve(A,D,B,C,ans1,ans2);
+		    // else { System.out.println(arr[0]+" "+arr[1]);continue;}
+		    if(ans1==-1 && ans2==-1) arr=solve(B,C,A,D,ans1,ans2);
+		    // else { System.out.println(arr[0]+" "+arr[1]);continue;}
+		    if(ans1==-1 && ans2 ==-1) arr=solve(B,D,A,C,ans1,ans2);
+		     //else { System.out.println(arr[0]+" "+arr[1]);continue;}
+		    if(ans1==-1 && ans2==-1) arr=solve(C,D,A,B,ans1,ans2);
+		     //else { System.out.println(arr[0]+" "+arr[1]);continue;}
+		    System.out.println(arr[0]+" "+arr[1]); continue;
+		    
+		    
+		}
+	}
+}
