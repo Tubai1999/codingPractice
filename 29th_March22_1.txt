@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class Main
+{
+    static int knapsack(int[] weight, int[] price, int n, int w)
+    {
+        if(n<=0 || w==0) return 0;
+        
+        else if(weight[n-1] <= w)
+        {
+            return Math.max(price[n-1]+knapsack(weight,price,n-1,w-weight[n-1]) , knapsack(weight,price,n-1,w));
+        }
+        
+        else if(weight[n-1]>w) 
+        return knapsack(weight,price,n-1,w);
+        
+        return 0;
+        
+    }
+    
+    
+	public static void main(String[] args) {
+		int[] weight = {2,3,1,4};
+		int[] price = {2,3,10,5};
+		int ans = knapsack(weight,price,4,7);
+		System.out.println(ans);
+		
+	}
+}
