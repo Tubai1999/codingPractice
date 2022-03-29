@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main
+{
+    static int mat[][] =new int[4+1][7+1];
+    static int knapsack(int[] weight,int[] price,int n,int w)
+    {
+        if(n==0 || w==0) return 0;
+        
+        if(mat[n][w] != -1) return mat[n][w];
+        
+        else if(weight[n-1]<=w)
+        {
+            return mat[n][w] = Math.max(price[n-1]+knapsack(weight,price,n-1,w-weight[n-1]), knapsack(weight,price,n-1,w));
+        }
+        else if (weight[n-1]>w) return mat[n][w] = knapsack(weight,price,n-1,w);
+        
+        return 0;
+    }
+    
+	public static void main(String[] args) {
+	    
+	    for(int[] a:mat)
+	    {
+	        Arrays.fill(a,-1);
+	    }
+	
+	int[] weight = {1,2,4,3};
+	int[] price = {20,3,5,6};
+	int n = 4; int w=7;
+	long s = System.nanoTime();
+	System.out.println(knapsack(weight,price,n,7));
+	long e = System.nanoTime();
+	System.out.println(e-s);
+	}
+}
