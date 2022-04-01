@@ -1,0 +1,40 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+public class Main
+{
+    static void print_val(int n)
+    {
+        if(n==1) { System.out.println(1);return;}
+        
+        print_val(n-1);
+        System.out.println(n);
+    }
+    
+    static int fact(int n)
+    {
+        if(n==1) return 1;
+         
+         return n*fact(n-1);
+    }
+    
+    static int fibo(int n)
+    {
+        if(n==1 || n==2) return 1 ;
+        
+        return fibo(n-1)+fibo(n-2);
+        
+    }
+    
+	public static void main(String[] args) {
+	
+	//print_val(5);
+	//System.out.println(fact(5));
+	System.out.println(fibo(5));
+	}
+}
