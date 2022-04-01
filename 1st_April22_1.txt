@@ -1,0 +1,19 @@
+public class Main
+{
+    static void substr(String s,int i,String ans)
+    {
+        if(i==s.length()) {System.out.println(ans); return;}
+        
+        substr(s,i+1,ans);
+        substr(s,i+1,ans+s.charAt(i));
+        
+        
+        
+        
+    }
+    
+	public static void main(String[] args) {
+		String s = "abc";
+		substr(s,0," ");
+	}
+}
