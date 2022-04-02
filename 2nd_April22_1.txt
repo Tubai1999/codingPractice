@@ -1,0 +1,46 @@
+import java.util.*;
+public class Main
+{
+    static void sort(ArrayList<Integer> arr)
+    {
+        if(arr.size()==1) return;
+        
+        int last_val = arr.remove(arr.size()-1);
+        sort(arr);
+        insert(arr,last_val);
+        
+    }
+    static void insert(ArrayList<Integer> arr,int last_val)
+    {
+        
+        if(arr.size() == 0 || arr.get(arr.size()-1) <= last_val)
+        {
+            arr.add(last_val);return;
+        }
+        
+        int val = arr.remove(arr.size()-1);
+        insert(arr,last_val);
+        arr.add(val);
+    }
+    
+    
+    
+    
+    
+	public static void main(String[] args) {
+		ArrayList<Integer> arr = new ArrayList<>();
+	
+		arr.add(1);
+		arr.add(10);
+		arr.add(5);
+		arr.add(4);
+		arr.add(7);
+		arr.add(9);
+	    sort(arr);
+	    for(Integer a:arr)
+	    System.out.println(a);
+		
+	}
+}
+
+
