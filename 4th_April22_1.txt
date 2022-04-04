@@ -1,0 +1,22 @@
+public class Main
+{
+    enum Season
+    {
+        TRIDIB(5),SONU(10),DUNU(15),RAJKUMAR(20);
+        private int value;
+        Season(int value)
+        {
+            this.value = value;
+        }
+        
+    }
+    
+	public static void main(String[] args) {
+		System.out.println(Season.SONU);
+		for(Season s:Season.values())
+		{
+		    System.out.println(s+" "+s.value);
+		}
+	}
+}
+
