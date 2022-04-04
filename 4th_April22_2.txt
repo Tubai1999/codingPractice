@@ -1,0 +1,29 @@
+public class Main
+{
+	public static void main(String[] args) {
+	   Task task = new Task();
+	   Thread thread = new Thread(task);
+	   thread.start();
+	   System.out.println("inside main");
+	}
+}
+
+class Task implements Runnable{
+    
+    //@Override
+    public void run()
+    {
+        System.out.println("it is run method");
+        go();
+    }
+    private void go()
+    {
+        System.out.println("it is going");
+        more();
+    }
+    private void more()
+    {
+        System.out.println("It is in more");
+    }
+}
+
