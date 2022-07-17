@@ -1,0 +1,47 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t-- >0)
+		{
+		    int n = sc.nextInt();sc.nextLine();
+		    String word = sc.nextLine();
+		    
+		   // if(n<4) {System.out.println("YES"); return;}
+		    //ArrayList<Integer> list  = new ArrayList<>();
+		    int[] arr = new int[n];
+		    
+		    for(int i = 0;i<n;i++)
+		    {
+		        if(word.charAt(i)=='a' || word.charAt(i)=='e' || word.charAt(i)=='i' || word.charAt(i)=='o' || word.charAt(i)=='u')
+		        {
+		            arr[i]=0;
+		        }
+		        else arr[i]=1;
+		        
+		    }
+		    int count =0; int ans = Integer.MIN_VALUE;
+		    for(int j = 1;j<n;j++)
+		    {
+		        if(arr[j] == 1 && arr[j-1] ==1) 
+		        {
+		            count++;
+		            ans  = Math.max(ans,count);
+		        }
+		        else count =0;
+		    }
+		    if(ans>=3) System.out.println("NO");
+		    else System.out.println("YES");
+		}
+	}
+}
