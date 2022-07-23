@@ -1,0 +1,38 @@
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        int n = arr.length;
+        // int i=0;
+        // if(n<3) return false;
+        // else
+        // {
+        //     while(i<n-1)
+        //     {
+        //         if(arr[i]<arr[i+1]) i++;
+        //         else break;
+        //     }//i--;
+        //     if(i==n-1 || i==0) return false;
+        //     while(i<n-1)
+        //     {
+        //         if(arr[i]>arr[i+1]) i++;
+        //         else return false;
+        //     }
+        //     return true;
+        // }
+        
+        int i=0;
+        if(n<3) return false;
+        else
+        {
+            
+            int left=0;int right = n-1;
+            while(left<right)
+            {
+                if(arr[left]<arr[left+1]) left++;
+                else if(arr[right]<arr[right-1]) right--;
+                else break;
+            }
+            if(left==right && left !=0 && right != n-1) return true;
+            else return false;
+        }
+    }
+}
