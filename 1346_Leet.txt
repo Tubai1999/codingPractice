@@ -1,0 +1,14 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int n = arr.length;
+        //Arrays.sort(arr);
+        //Arrays.sort(arr,Collections.reverseOrder());
+        for(int i:arr)
+        {
+            if(map.containsKey(i*2)|| i%2==0 && map.containsKey(i/2) ) return true;
+            else map.put(i,1);
+        }
+        return false;
+    }
+}
