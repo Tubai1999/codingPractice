@@ -1,0 +1,25 @@
+class Solution {
+    public int[] maxSubsequence(int[] nums, int k) {
+        
+        int[][] indexAndValue = new int[nums.length][2];
+        for(int i=0;i<nums.length;i++)
+        {
+            indexAndValue[i] = new int[]{i,nums[i]};
+        }
+        // reversely sort using value
+        Arrays.sort(indexAndValue,Comparator.comparingInt(a -> -a[1])); 
+        
+        int[][] copyArray = Arrays.copyOf(indexAndValue,k);
+        
+        Arrays.sort(copyArray,Comparator.comparingInt(a -> a[0]));
+        
+        int[] ans = new int[k];
+        for(int i=0;i<k;i++)
+        {
+            ans[i] = copyArray[i][1];
+        }return ans;
+        
+        
+        
+    }
+}
